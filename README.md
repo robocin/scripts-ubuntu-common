@@ -4,7 +4,7 @@
 
 ## Regras:
 
-- ***Parte desses scripts poderão rodar em servidores Docker 🐳, portanto precisam ser automatizáveis***;
+- ***Parte desses scripts poderão rodar em servidores Docker 🐳, portanto precisam ser automatizáveis;***
     - Procure manter os scripts funcionando apenas ao chamá-los, ou seja, evitando a iteração com o usuário;
 
     ---
@@ -29,7 +29,7 @@
     fi
     ```
 
-- *Não adicione a keyword `sudo` no começo do script, é responsabilidade do comando que o chamar ser com essa keyword, ex:*
+- ***Não adicione a keyword `sudo` no começo do script, é responsabilidade do comando que o chamar ser com essa keyword, ex:***
 
 ```bash
 sudo apt-get install reino-das-coxinhas -y # errado, remover 'sudo'
