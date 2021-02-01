@@ -1,1 +1,1 @@
-apt-get install build-essential qtcreator -y
+DEBIAN_FRONTEND=noninteractive apt-get install default-jre default-jdk build-essential qtcreator -y
