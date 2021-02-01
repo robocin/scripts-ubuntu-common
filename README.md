@@ -4,7 +4,7 @@
 
 ## Regras:
 
-- ***Parte desses scripts poderão rodar em servidores Docker 🐳, portanto precisam ser automatizáveis;***
+- ***Parte desses scripts poderão rodar em servidores ou containers Docker 🐳, portanto precisam ser automatizáveis;***
     - Procure manter os scripts funcionando apenas ao chamá-los, ou seja, evitando a iteração com o usuário;
 
     ---
@@ -27,6 +27,13 @@
     then
       ARG1="default-value"   # adiciona um valor default
     fi
+    ```
+
+    ---
+
+    - [Pode ser necessário adicionar ao script a variável de ambiente](https://askubuntu.com/questions/876240/how-to-automate-setting-up-of-keyboard-configuration-package) `DEBIAN_FRONTEND=noninteractive` ao inicio, ex:
+    ```bash
+    DEBIAN_FRONTEND=noninteractive apt-get install keyboard-configuration -y # ok
     ```
 
 - ***Não adicione a keyword `sudo` no começo do script, é responsabilidade do comando que o chamar ser com essa keyword, ex:***
