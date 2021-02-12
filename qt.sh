@@ -1,7 +1,6 @@
 QT=${1}
 
-if [ -z ${QT} ]
-then
+if [ -z "${QT}" ]; then
   QT="5.15.2"
 fi
 
