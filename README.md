@@ -4,6 +4,9 @@
 
 ## Regras:
 
+- ***Parte desses scripts são apenas para configuração do ambiente de trabalho. É importante ter o pip3 instalado antes de rodar esses scripts.
+	- Ex: "install-vscode-exentions.sh" instala as extensões do vscode que utilizamos e seus requisistos.
+
 - ***Parte desses scripts poderão rodar em servidores ou containers Docker 🐳, portanto precisam ser automatizáveis;***
     - Procure manter os scripts funcionando apenas ao chamá-los, ou seja, evitando a iteração com o usuário;
 
