@@ -5,7 +5,7 @@
 ## Regras:
 
 - ***Parte desses scripts são apenas para configuração do ambiente de trabalho. É importante ter o pip3 instalado antes de rodar esses scripts.***
-	- Ex: "install-vscode-exentions.sh" instala as extensões do vscode que utilizamos e seus requisistos.
+	- Ex: "vscode-cpp-essentials.sh" instala as extensões do vscode de C++ que utilizamos e seus requisistos.
 
 - ***Parte desses scripts poderão rodar em servidores ou containers Docker 🐳, portanto precisam ser automatizáveis;***
     - Procure manter os scripts funcionando apenas ao chamá-los, ou seja, evitando a iteração com o usuário;
@@ -45,4 +45,20 @@
 sudo apt-get install reino-das-coxinhas -y # errado, remover 'sudo'
 sudo apt-get install script-bom            # errado, remover 'sudo', adicionar '-y'
 apt-get install g++ -y                     # ok
+```
+
+- ***Atentar-se as permissões dos arquivos adicionados. Colocar `chown` caso preciso, ex:***
+
+```bash
+CURRENT_USER=$(who | awk 'NR==1{print $1}')
+
+chown "${CURRENT_USER}":"${CURRENT_USER}" "${DIR}" -R
+```
+
+- ***Remover arquivos temporários baixados com `wget` e similares durante a execução dos scripts, ex:***
+
+```bash
+wget https://github.com/microsoft/vscode-cpptools/releases/download/1.2.1/cpptools-linux.vsix
+code --install-extension cpptools-linux.vsix
+rm cpptools-linux.vsix # << não esquecer
 ```
