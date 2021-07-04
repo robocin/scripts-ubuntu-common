@@ -1,3 +1,5 @@
+#!/bin/bash
+
 QT=${1}
 
 if [ -z "${QT}" ]; then
