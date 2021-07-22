@@ -22,4 +22,4 @@ aqt install --outputdir "${DIR}" "${QT}" linux desktop
 
 chown "${CURRENT_USER}":"${CURRENT_USER}" "${DIR}" -R
 
-rm aqtinstall.log
+rm -f aqtinstall.log
