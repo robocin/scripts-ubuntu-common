@@ -6,7 +6,7 @@ DIR=${2}
 CURRENT_USER=$(who | awk 'NR==1{print $1}')
 
 if [ -z "${QT}" ]; then
-  QT="6.2.0"
+  QT="6.1.1"
 fi
 
 if [ -z "${DIR}" ]; then
@@ -14,8 +14,10 @@ if [ -z "${DIR}" ]; then
 fi
 
 apt-get install git cmake python3 python3-pip build-essential libdbus-1-3 libpulse-mainloop-glib0 -y
-apt-get install libssl-dev x11-xkb-utils xkb-data libxcb-xkb-dev libxkbcommon-dev -y
-apt-get install libvulkan1 mesa-vulkan-drivers vulkan-utils -y
+apt-get install libgl-dev libglu-dev 'libxcb*-dev' libx11-xcb-dev libxkbcommon-x11-dev libpcre2-dev libz-dev \
+                libfreetype6-dev libpng-dev libjpeg-dev libsqlite3-dev libharfbuzz-dev libb2-dev \
+                libdouble-conversion-dev libmd4c-dev libssl-dev x11-xkb-utils xkb-data libxcb-xkb-dev libxkbcommon-dev \
+                libvulkan1 mesa-vulkan-drivers vulkan-utils -y
 
 pip3 install aqtinstall
 
