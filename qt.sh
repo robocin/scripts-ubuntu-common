@@ -6,7 +6,7 @@ DIR=${2}
 CURRENT_USER=$(who | awk 'NR==1{print $1}')
 
 if [ -z "${QT}" ]; then
-  QT="6.1.1"
+  QT="6"
 fi
 
 if [ -z "${DIR}" ]; then
@@ -21,8 +21,9 @@ apt-get install libgl-dev libglu-dev 'libxcb*-dev' libx11-xcb-dev libxkbcommon-x
 
 pip3 install aqtinstall
 
-aqt install --outputdir "${DIR}" "${QT}" linux desktop
+aqt install-qt linux desktop "${QT}" -O "${DIR}"
 
 chown "${CURRENT_USER}":"${CURRENT_USER}" "${DIR}" -R
+chown "${CURRENT_USER}":"${CURRENT_USER}" "/usr/local/bin/aqt" -R
 
 rm -f aqtinstall.log
