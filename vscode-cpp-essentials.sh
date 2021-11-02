@@ -14,6 +14,8 @@ else
   code --install-extension wayou.vscode-todo-highlight --force
   code --install-extension cschlosser.doxdocgen --force
   code --install-extension akiramiyakoda.cppincludeguard --force
+  code --install-extension tdennis4496.cmantic --force
+  code --install-extension CoenraadS.bracket-pair-colorizer --force
   # todo: new class template
   # todo: static check
 fi
