@@ -17,6 +17,7 @@ else
   code --install-extension tdennis4496.cmantic --force
   code --install-extension CoenraadS.bracket-pair-colorizer --force
   code --install-extension tonka3000.qtvsctools --force
+  code --install-extension zxh404.vscode-proto3 --force
   # todo: new class template
   # todo: static check
 fi
