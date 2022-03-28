@@ -11,7 +11,7 @@ fi
 DIR="${PARENT_DIR}/libtorch"
 OUTPUT_FILE="${PARENT_DIR}/libtorch.zip"
 
-LINK="https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.9.0%2Bcpu.zip"
+LINK="https://download.pytorch.org/libtorch/nightly/cpu/libtorch-cxx11-abi-shared-with-deps-latest.zip"
 
 mkdir -p "${PARENT_DIR}"
 wget -O "${OUTPUT_FILE}" "${LINK}"
