@@ -1,55 +1,49 @@
 # scripts-ubuntu-common 📜
 
-*Esse repositório tem como objetivo apenas armazenar scripts shell para a instalação de dependências no ubuntu, funcionando como submódulo de outros projetos maiores;*
+*Store shell scripts for installing dependencies on Ubuntu.*
 
-## Regras:
-
-- ***Parte desses scripts são apenas para configuração do ambiente de trabalho, ex:***
-  ```bash
-  "vscode-cpp-essentials.sh" # instala as extensões do vscode de C++ que utilizamos e seus requisistos.
-  ```
-
-- ***Parte desses scripts poderão rodar em servidores ou containers Docker 🐳, portanto precisam ser automatizáveis;***
-    - Procure manter os scripts funcionando apenas ao chamá-los, ou seja, evitando a iteração com o usuário;
+## Rules:
+- ***These scripts will be able to run on Docker 🐳 servers or containers, so they need to be automatable;***
+    - Try to keep the scripts working only when calling them, that is, avoiding interaction with the user;
 
     ---
 
-    - Para scripts `apt install`, `apt-get install`  por exemplo, comumente adiciona-se a flag `-y` ao final para que seja respondido `yes` de forma automática sempre que for requisitado, ex:
+    - For `apt install`, `apt-get install` scripts for example, the `-y` flag is usually added to the end so that `yes` is answered automatically whenever it is requested, e.g.:
 
     ```bash
     apt-get install reino-das-coxinhas -y # ok
-    apt-get install script-bom            # errado, adicionar '-y'
+    apt-get install good-script           # wrong, add '-y'
     ```
 
     ---
 
-    - Para scripts que aceitam argumentos, procure a adição de argumentos default, ex:
+    - For scripts that accept arguments, assign values by default, e.g.:
 
     ```bash
     ARG1=${1}
 
-    if [ -z ${ARG1} ] # verifica se o argumento 1 é vazio
+    if [ -z ${ARG1} ] # checks if 'ARG1' is empty
     then
-      ARG1="default-value"   # adiciona um valor default
+      ARG1="some-default-value"   # add a default value
     fi
     ```
 
     ---
 
-    - [Pode ser necessário adicionar ao script a variável de ambiente](https://askubuntu.com/questions/876240/how-to-automate-setting-up-of-keyboard-configuration-package) `DEBIAN_FRONTEND=noninteractive` ao inicio, ex:
+    - [It may be necessary to add the `DEBIAN_FRONTEND=noninteractive` environment variable to the script](https://askubuntu.com/questions/876240/how-to-automate-setting-up-of-keyboard-configuration-package), e.g.:
     ```bash
     DEBIAN_FRONTEND=noninteractive apt-get install keyboard-configuration -y # ok
     ```
 
-- ***Não adicione a keyword `sudo` no começo do script, é responsabilidade do comando que o chamar ser com essa keyword, ex:***
+- ***Do not add the `sudo` keyword at the beginning of the script, it is the responsibility of the command that calls it with that keyword, e.g.:***
 
 ```bash
-sudo apt-get install reino-das-coxinhas -y # errado, remover 'sudo'
-sudo apt-get install script-bom            # errado, remover 'sudo', adicionar '-y'
+sudo apt-get install reino-das-coxinhas -y # wrong, remove 'sudo'
+sudo apt-get install good-script           # wrong, remove 'sudo, add '-y'
 apt-get install g++ -y                     # ok
 ```
 
-- ***Atentar-se as permissões dos arquivos adicionados. Colocar `chown` caso preciso, ex:***
+- ***Pay attention to the permissions of the added files. Put `chown` if necessary, e.g.:***
 
 ```bash
 CURRENT_USER=$(who | awk 'NR==1{print $1}')
@@ -57,10 +51,10 @@ CURRENT_USER=$(who | awk 'NR==1{print $1}')
 chown "${CURRENT_USER}":"${CURRENT_USER}" "${DIR}" -R
 ```
 
-- ***Remover arquivos temporários baixados com `wget` e similares durante a execução dos scripts, ex:***
+- ***Remove temporary files downloaded with `wget` and similar during script execution, e.g.:***
 
 ```bash
 wget https://github.com/microsoft/vscode-cpptools/releases/download/1.2.1/cpptools-linux.vsix
 code --install-extension cpptools-linux.vsix
-rm cpptools-linux.vsix # << não esquecer
+rm cpptools-linux.vsix # << don't forget
 ```
