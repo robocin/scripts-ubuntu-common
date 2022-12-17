@@ -1,7 +1,16 @@
 #!/bin/bash
 
-QT=${1}
-DIR=${2}
+function is_root {
+  [ "${EUID:-$(id -u)}" -eq 0 ];
+}
+
+if ! is_root; then
+  echo -e "\x1B[31m[ERROR] This script requires root privileges."
+  exit 1
+fi
+
+QT="${1}"
+DIR="${2}"
 
 CURRENT_USER=$(who | awk 'NR==1{print $1}')
 

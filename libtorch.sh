@@ -1,7 +1,15 @@
 #!/bin/bash
 
-PARENT_DIR=${1}
+function is_root {
+  [ "${EUID:-$(id -u)}" -eq 0 ];
+}
 
+if ! is_root; then
+  echo -e "\x1B[31m[ERROR] This script requires root privileges."
+  exit 1
+fi
+
+PARENT_DIR="${1}"
 CURRENT_USER=$(who | awk 'NR==1{print $1}')
 
 if [ -z "${PARENT_DIR}" ]; then
