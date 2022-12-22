@@ -11,6 +11,7 @@ fi
 
 QT="${1}"
 DIR="${2}"
+TMP_WORK_DIR="/tmp/qt"
 
 CURRENT_USER=$(who | awk 'NR==1{print $1}')
 
@@ -22,17 +23,43 @@ if [ -z "${DIR}" ]; then
   DIR="/opt/qt"
 fi
 
-apt-get install git cmake python3 python3-pip build-essential libdbus-1-3 libpulse-mainloop-glib0 -y
-apt-get install libgl-dev libglu-dev 'libxcb*-dev' libx11-xcb-dev libxkbcommon-x11-dev libpcre2-dev libz-dev \
-                libfreetype6-dev libpng-dev libjpeg-dev libsqlite3-dev libharfbuzz-dev libb2-dev \
-                libdouble-conversion-dev libmd4c-dev libssl-dev x11-xkb-utils xkb-data libxcb-xkb-dev libxkbcommon-dev \
-                libvulkan1 mesa-vulkan-drivers vulkan-utils -y
+apt install 'libxcb*-dev' \
+            build-essential \
+            libb2-dev \
+            libdbus-1-3 \
+            libdouble-conversion-dev \
+            libfreetype6-dev \
+            libgl-dev libglu-dev \
+            libharfbuzz-dev \
+            libjpeg-dev \
+            libmd4c-dev \
+            libpcre2-dev \
+            libpng-dev \
+            libpulse-mainloop-glib0 \
+            libsqlite3-dev \
+            libssl-dev \
+            libvulkan1 \
+            libx11-xcb-dev \
+            libxcb-xkb-dev \
+            libxkbcommon-dev \
+            libxkbcommon-x11-dev \
+            libz-dev \
+            mesa-vulkan-drivers \
+            vulkan-utils \
+            x11-xkb-utils \
+            xkb-data \
+            -y
 
 pip3 install aqtinstall
 
+rm -rf "${TMP_WORK_DIR}"
+mkdir -p "${TMP_WORK_DIR}"
+
+pushd "${TMP_WORK_DIR}" || exit 1
 aqt install-qt linux desktop "${QT}" -O "${DIR}"
+popd || exit 1
+
+rm -rf "${TMP_WORK_DIR}"
 
 chown "${CURRENT_USER}":"${CURRENT_USER}" "${DIR}" -R
 chown "${CURRENT_USER}":"${CURRENT_USER}" "/usr/local/bin/aqt" -R
-
-rm -f aqtinstall.log
