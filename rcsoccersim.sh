@@ -19,13 +19,7 @@ function install_packages {
   git clone $git_url
   cd $package_name
   ./bootstrap && ./configure && make -j"$(nproc)" && make install
-  if [ $? -ne 0 ]; then
-      echo -e "\x1B[31m[ERROR] failed installing $package_name module"
-      exit 1
-  fi
-  cd ..
   mv $package_name /opt
-
 }
 
 if [ "$#" -eq 0 ]; then
@@ -35,4 +29,9 @@ fi
 
 for arg in "$@"; do
   install_packages $(echo "$arg")
+  if [ $? -ne 0 ]; then
+      echo -e "\x1B[31m[ERROR] failed installing $package_name module"
+      exit 1
+  fi
+  cd ..
 done
