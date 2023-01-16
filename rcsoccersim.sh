@@ -13,13 +13,18 @@ GITHUB_RCSOCCERSIM_PREFIX="https://github.com/rcsoccersim"
 
 function install_packages {
   local package_name="$1"
-  local base_dir=`pwd`
-  local git_url="$GITHUB_RCSOCCERSIM_PREFIX/$package_name.git"
+  local tmp_dir="/tmp/${package_name}"
+  local git_url="${GITHUB_RCSOCCERSIM_PREFIX}/${package_name}.git"
 
-  git clone $git_url
-  cd $package_name
-  ./bootstrap && ./configure && make -j"$(nproc)" && make install
-  mv $package_name /opt
+  rm -rf "${tmp_dir}"
+  mkdir -p "${tmp_dir}"
+
+  git clone "${git_url}" -o "${package_name}" "${tmp_dir}"
+  pushd "${tmp_dir}" || exit 1
+  ./bootstrap && ./configure --prefix "/opt/${package_name}" && make -j"$(nproc)" && make install
+  popd || exit 1
+
+  rm -rf "${tmp_dir}"
 }
 
 if [ "$#" -eq 0 ]; then
