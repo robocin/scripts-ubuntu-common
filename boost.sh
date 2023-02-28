@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apt-get install libboost-all-dev -y
+apt install libboost-all-dev -y

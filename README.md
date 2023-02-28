@@ -8,11 +8,11 @@
 
     ---
 
-    - For `apt install`, `apt-get install` scripts for example, the `-y` flag is usually added to the end so that `yes` is answered automatically whenever it is requested, e.g.:
+    - For `apt install` scripts for example, the `-y` flag is usually added to the end so that `yes` is answered automatically whenever it is requested, e.g.:
 
     ```bash
-    apt-get install reino-das-coxinhas -y # ok
-    apt-get install good-script           # wrong, add '-y'
+    apt install reino-das-coxinhas -y # ok
+    apt install good-script           # wrong, add '-y'
     ```
 
     ---
@@ -32,15 +32,15 @@
 
     - [It may be necessary to add the `DEBIAN_FRONTEND=noninteractive` environment variable to the script](https://askubuntu.com/questions/876240/how-to-automate-setting-up-of-keyboard-configuration-package), e.g.:
     ```bash
-    DEBIAN_FRONTEND=noninteractive apt-get install keyboard-configuration -y # ok
+    DEBIAN_FRONTEND=noninteractive apt install keyboard-configuration -y # ok
     ```
 
 - ***Do not add the `sudo` keyword at the beginning of the script, it is the responsibility of the command that calls it with that keyword, e.g.:***
 
 ```bash
-sudo apt-get install reino-das-coxinhas -y # wrong, remove 'sudo'
-sudo apt-get install good-script           # wrong, remove 'sudo, add '-y'
-apt-get install g++ -y                     # ok
+sudo apt install reino-das-coxinhas -y # wrong, remove 'sudo'
+sudo apt install good-script           # wrong, remove 'sudo, add '-y'
+apt install g++ -y                     # ok
 ```
 
 - ***Pay attention to the permissions of the added files. Put `chown` if necessary, e.g.:***
