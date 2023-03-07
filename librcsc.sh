@@ -9,22 +9,16 @@ if ! is_root; then
   exit 1
 fi
 
-ROOT_DIR="/root"
-GITURL="https://github.com/helios-base/librcsc.git"
-LIBRCSC="librcsc"
-git clone "${GIRURL}" -o "${LIBRCSC}" "${ROOT_DIR}"
+GITHUB_LIBRCSC_URL="https://github.com/helios-base/librcsc.git"
+tmp_dir="/tmp/librcsc"
 
-function install_package {
-  local tmp_dir="/tmp/${package_name}"
-  local git_url="${GITHUB_RCSOCCERSIM_PREFIX}/${package_name}.git"
+rm -rf "${tmp_dir}"
+mkdir -p "${tmp_dir}"
 
-  rm -rf "${tmp_dir}"
-  mkdir -p "${tmp_dir}"
+git clone "${GITHUB_LIBRCSC_URL}" -o "librcsc" "${tmp_dir}"
 
-  git clone "${git_url}" -o "${package_name}" "${tmp_dir}"
-  pushd "${tmp_dir}" || exit 1
-  ./bootstrap && ./configure --prefix "/opt/${package_name}" && make -j"$(nproc)" && make install
-  popd || exit 1
+pushd "${tmp_dir}" || exit 1
+./bootstrap && ./configure --prefix "/opt/librcsc" && make -j"$(nproc)" && make install
+popd || exit 1
 
-  rm -rf "${tmp_dir}"
-}
+rm -rf "${tmp_dir}"
