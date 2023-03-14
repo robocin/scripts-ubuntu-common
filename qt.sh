@@ -39,6 +39,7 @@ apt install 'libxcb*-dev' \
             libsqlite3-dev \
             libssl-dev \
             libvulkan1 \
+            libwayland-dev \
             libx11-xcb-dev \
             libxcb-xkb-dev \
             libxkbcommon-dev \

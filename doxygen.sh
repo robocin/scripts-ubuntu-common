@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apt-get install doxygen graphviz -y
+apt install doxygen graphviz -y

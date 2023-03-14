@@ -29,9 +29,9 @@ fi
 
 echo -e "\x1B[01;93mInstalling or updating required packages...\n\u001b[0m"
 
-apt-get install software-properties-common -y
+apt install software-properties-common -y
 add-apt-repository ppa:ubuntu-toolchain-r/test -y
-apt-get install build-essential -y
+apt install build-essential -y
 
 echo -e "\u001b[35m\n--\n\u001b[0m"
 
@@ -39,7 +39,7 @@ if [ -z "$(which g++)" ]; then
   echo -e "\x1B[01;93mNo gcc/g++ compiler found."
   echo -e "\x1B[01;93mInstalling default gcc/g++ version...\n\u001b[0m"
 
-  apt-get install gcc g++ -y
+  apt install gcc g++ -y
 
   echo -e "\u001b[35m\n--\n\u001b[0m"
 fi
@@ -71,7 +71,7 @@ fi
 
 echo -e "\x1B[01;93mInstalling or updating gcc-${VERSION} g++-${VERSION}...\n\u001b[0m"
 
-apt-get install gcc-"${VERSION}" g++-"${VERSION}" -y
+apt install gcc-"${VERSION}" g++-"${VERSION}" -y
 add-alternative "${VERSION}"
 
 echo -e "\u001b[35m\n--\n\u001b[0m"

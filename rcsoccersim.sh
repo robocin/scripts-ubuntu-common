@@ -32,7 +32,8 @@ if [ "$#" -eq 0 ]; then
   exit 1
 fi
 
-for arg in "$@"; do
+ARGS=${1}
+for arg in $ARGS; do
   install_packages $(echo "$arg")
   if [ $? -ne 0 ]; then
       echo -e "\x1B[31m[ERROR] failed installing $arg module"

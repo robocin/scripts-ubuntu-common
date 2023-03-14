@@ -1,3 +1,3 @@
 #!/bin/bash
 
-apt-get install freeglut3 freeglut3-dev -y
+apt install freeglut3 freeglut3-dev -y
