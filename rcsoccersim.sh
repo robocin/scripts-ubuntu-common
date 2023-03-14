@@ -32,13 +32,10 @@ if [ "$#" -eq 0 ]; then
   exit 1
 fi
 
-ARGS=${1}
-IFS=' ' #set the internal field separator to 
-read -ra TOKENS <<< "$ARGS"
-for arg in "${TOKENS[@]}"; do
+for arg in "$@"; do
   install_packages $(echo "$arg")
   if [ $? -ne 0 ]; then
-      echo -e "\x1B[31m[ERROR] failed installing $package_name module"
+      echo -e "\x1B[31m[ERROR] failed installing $arg module"
       exit 1
   fi
 done
