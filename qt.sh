@@ -46,16 +46,14 @@ apt install 'libxcb*-dev' \
             libxkbcommon-x11-dev \
             libz-dev \
             mesa-vulkan-drivers \
-            vulkan-utils \
+            vulkan-tools \
             x11-xkb-utils \
             xkb-data \
-            -y
-
-apt-get install '^libxcb.*-dev' \
-                libx11-xcb-dev \
-                libglu1-mesa-dev \
-                libxrender-dev \
-                libxi-dev -y
+            '^libxcb.*-dev' \
+            libx11-xcb-dev \
+            libglu1-mesa-dev \
+            libxrender-dev \
+            libxi-dev -y
 
 pip3 install aqtinstall
 
