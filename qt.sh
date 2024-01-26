@@ -16,7 +16,7 @@ TMP_WORK_DIR="/tmp/qt"
 CURRENT_USER=$(who | awk 'NR==1{print $1}')
 
 if [ -z "${QT}" ]; then
-  QT="6"
+  QT="6.4.0"
 fi
 
 if [ -z "${DIR}" ]; then
