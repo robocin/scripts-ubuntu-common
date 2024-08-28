@@ -9,4 +9,4 @@ if ! is_root; then
   exit 1
 fi
 
-apt install freeglut3 freeglut3-dev -y
+apt install freeglut3-dev -y

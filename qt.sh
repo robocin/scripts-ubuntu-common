@@ -55,7 +55,7 @@ apt install 'libxcb*-dev' \
             libxrender-dev \
             libxi-dev -y
 
-pip3 install aqtinstall
+pip3 install aqtinstall --break-system-packages
 
 rm -rf "${TMP_WORK_DIR}"
 mkdir -p "${TMP_WORK_DIR}"
