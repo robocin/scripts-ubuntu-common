@@ -14,7 +14,7 @@ if [ -z "$(which code)" ]; then
   echo -e "\033[0mYou can install using snap with the following command:\n"
 
 
-  echo -e "\x1B[01;93m   $ apt install --classic code\n"
+  echo -e "\x1B[01;93m   $ apt install code\n"
 
 
 else
