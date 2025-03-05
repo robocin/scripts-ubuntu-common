@@ -35,9 +35,6 @@ else
   code --install-extension streetsidesoftware.code-spell-checker --force
 
 
-  code --install-extension eamodio.gitlens --force
-
-
   code --install-extension wayou.vscode-todo-highlight --force
 
 
