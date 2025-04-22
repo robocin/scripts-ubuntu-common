@@ -55,7 +55,13 @@ apt install 'libxcb*-dev' \
             libxrender-dev \
             libxi-dev -y
 
-pip3 install aqtinstall
+UBUNTU_VERSION=$(lsb_release -rs)
+
+if dpkg --compare-versions "$UBUNTU_VERSION" ge "24.04"; then
+  pip3 install aqtinstall --break-system-packages
+else
+  pip3 install aqtinstall
+fi
 
 rm -rf "${TMP_WORK_DIR}"
 mkdir -p "${TMP_WORK_DIR}"
