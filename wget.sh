@@ -9,4 +9,4 @@ if ! is_root; then
   exit 1
 fi
 
-apt-get install libprotobuf-dev libprotoc-dev protobuf-compiler -y
+apt-get install wget -y
