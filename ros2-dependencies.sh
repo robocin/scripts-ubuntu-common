@@ -15,4 +15,4 @@ if [ -z "$ROS_DISTRO" ]; then
 fi
 
 # Messages
-apt install ros-$ROS_DISTRO-geographic-msgs
+apt install ros-$ROS_DISTRO-geographic-msgs -y
